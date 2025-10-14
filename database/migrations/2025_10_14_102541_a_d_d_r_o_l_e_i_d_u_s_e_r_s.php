@@ -10,8 +10,10 @@ return new class extends Migration
      * Run the migrations.
      */
     public function up(): void
-    {
-            $table->foreignkey('role_id');
+    {   Schema::table('users', function (Blueprint $table) {
+            $table->foreignId('role_id')->constrained();
+        });
+           
 
     }
 
@@ -20,6 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema()('users', function (Blueprint $table) {
+            $table->dropConstrainedforeignid('role_id');
+        });
+           
     }
 };
