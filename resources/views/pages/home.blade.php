@@ -5,11 +5,19 @@
 @section('content')
 <div class="hero-section">
     <div class="container">
-        <img src="{{ asset('images/logo.png') }}" alt="Thibitisha Logo" style="height: 100px; margin-bottom: 20px;">
+        <img src="{{ asset('images/logo.png') }}" alt="Thibitisha Logo" class="home-logo">
         <h1 class="display-4 fw-bold">Welcome to Thibitisha</h1>
         <p class="lead">Trusted Medical Professional Verification System</p>
         <p>Ensuring authenticity in healthcare through secure verification</p>
-        <a href="/verify" class="btn btn-light btn-lg mt-3">Start Verification</a>
+        <a href="/verify" class="btn btn-warning btn-lg mt-3 fw-bold" 
+           style="background: linear-gradient(135deg, #ffffff, #FFA500); 
+                  border: 3px solid #FF8C00; 
+                  color: #8B4513; 
+                  padding: 12px 30px;
+                  font-size: 1.2rem;
+                  box-shadow: 0 4px 8px rgba(255, 165, 0, 0.3);">
+            <i class="bi bi-shield-check me-2"></i>Start Verification
+        </a>
     </div>
 </div>
 

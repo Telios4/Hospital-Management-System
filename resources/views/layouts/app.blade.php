@@ -14,10 +14,11 @@
     <!-- Custom Styles -->
     <style>
         :root {
-            --primary: #006EFD;
-            --secondary: #20C997;
-            --background: #F8F9FA;
-            --accent: #0A4275;
+            --primary: #8B4513;      /* SaddleBrown - Main brown */
+            --secondary: #D2691E;    /* Chocolate - Lighter brown */
+            --background: #FDF5E6;   /* OldLace - Warm light background */
+            --accent: #654321;       /* DarkBrown - Dark accent */
+            --light-brown: #DEB887;  /* BurlyWood - Light brown */
         }
         
         body {
@@ -31,6 +32,7 @@
         .navbar {
             background-color: white;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border-bottom: 3px solid var(--primary);
         }
         
         .navbar-brand {
@@ -41,10 +43,31 @@
         .nav-link {
             color: var(--accent) !important;
             font-weight: 500;
+            position: relative;
+            padding: 8px 16px !important;
+            transition: all 0.3s ease;
+            margin: 0 5px;
         }
         
         .nav-link:hover {
             color: var(--primary) !important;
+        }
+        
+        /* Active state with brown line */
+        .nav-link.active {
+            color: var(--primary) !important;
+            font-weight: 600;
+        }
+        
+        .nav-link.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 16px;
+            right: 16px;
+            height: 3px;
+            background-color: var(--primary);
+            border-radius: 2px;
         }
         
         .logo {
@@ -65,30 +88,77 @@
             color: white;
             padding: 20px 0;
             margin-top: auto;
+            border-top: 3px solid var(--primary);
         }
         
         .card {
             border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 6px rgba(139, 69, 19, 0.1);
             margin-bottom: 20px;
             transition: transform 0.2s;
+            border-left: 4px solid var(--primary);
         }
         
         .card:hover {
             transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(139, 69, 19, 0.15);
+        }
+        
+        .card-header {
+            background-color: var(--light-brown);
+            color: var(--accent);
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            border: 2px solid #FF8C00;
+            color: #8B4513;
+            font-weight: bold;
+        }
+        
+        .btn-warning:hover {
+            background: linear-gradient(135deg, #FFA500, #FF8C00);
+            border-color: #FF6347;
+            color: #654321;
+        }
+        
+        .btn-secondary {
+            background-color: var(--secondary);
+            border-color: var(--secondary);
+        }
+        
+        .text-primary {
+            color: var(--primary) !important;
         }
         
         .verification-placeholder, .admin-placeholder {
             padding: 20px;
-            background-color: #f8f9fa;
+            background-color: #FAF0E6; /* Linen - light warm background */
             border-radius: 10px;
             margin: 20px 0;
+            border-left: 4px solid var(--secondary);
         }
         
         .home-logo {
             height: 100px;
             width: auto;
             margin-bottom: 20px;
+        }
+        
+        /* Medical icons in brown theme */
+        .bi-shield-check, .bi-lightning-charge, .bi-award {
+            color: var(--primary);
         }
     </style>
     
@@ -110,16 +180,24 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Home</a>
+                        <a class="nav-link {{ request()->is('/') ? 'active' : '' }}" href="/">
+                            Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/about">About</a>
+                        <a class="nav-link {{ request()->is('about') ? 'active' : '' }}" href="/about">
+                            About
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/verify">Verification</a>
+                        <a class="nav-link {{ request()->is('verify') ? 'active' : '' }}" href="/verify">
+                            Verification
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/mkubwa">Admin Panel</a>
+                        <a class="nav-link {{ request()->is('mkubwa') ? 'active' : '' }}" href="/mkubwa">
+                            Admin Panel
+                        </a>
                     </li>
                 </ul>
             </div>
