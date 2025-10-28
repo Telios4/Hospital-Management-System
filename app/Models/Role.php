@@ -13,4 +13,10 @@ class Role extends Model
         'name',
         'description'
     ];
+    public function users() : HasMany{
+        return $this->hasMany(User::class);
+    }
+    public function users_count() : int{
+        return $this->users()->count();
+    }
 }
