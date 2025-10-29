@@ -6,21 +6,21 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('qualifications', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('practitioner_id')->constrained();
+            $table->foreignId('degree_id')->constrained();
+            $table->foreignId('institution_id')->constrained();
+            $table->string('specialization')->nullable();
+            $table->smallInteger('year_awarded')->nullable();
+            $table->text('notes')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('qualifications');
     }

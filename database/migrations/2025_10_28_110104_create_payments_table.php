@@ -6,21 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('license_id')->constrained();
+            $table->decimal('amount', 10, 2);
+            $table->date('payment_date');
+            $table->string('method'); // mpesa, card, etc.
+            $table->string('status'); // pending/confirmed
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('payments');
     }

@@ -6,21 +6,19 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('data_sync_logs', function (Blueprint $table) {
             $table->id();
+            $table->integer('records_processed');
+            $table->string('source_url');
+            $table->timestamp('synced_at');
+            $table->text('errors')->nullable();
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('data_sync_logs');
     }

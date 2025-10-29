@@ -6,21 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
         Schema::create('licenses', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('practitioner_id')->constrained();
+            $table->string('license_number')->unique();
+            $table->date('issue_date');
+            $table->date('expiry_date');
+            $table->string('status'); // active/suspended/expired
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
         Schema::dropIfExists('licenses');
     }

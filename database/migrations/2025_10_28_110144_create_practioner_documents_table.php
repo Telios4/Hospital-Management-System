@@ -6,22 +6,20 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
-    public function up(): void
+    public function up()
     {
-        Schema::create('practioner_documents', function (Blueprint $table) {
+        Schema::create('practitioner_documents', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('practitioner_id')->constrained();
+            $table->string('document_type'); // degree, certificate, id, license
+            $table->string('file_path');
+            $table->date('uploaded_at');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     */
-    public function down(): void
+    public function down()
     {
-        Schema::dropIfExists('practioner_documents');
+        Schema::dropIfExists('practitioner_documents');
     }
 };
