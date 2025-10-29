@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
 
 Route::get('/', function () {
-    return view('pages.home');
+    return view('layouts.admin');
 });
 Route::get('roles', function () {
     return view('roles.index');
@@ -32,3 +32,4 @@ Route::get('/verify', function () {
 Route::get('/mkubwa', function () {
     return view('pages.admin');
 });
+

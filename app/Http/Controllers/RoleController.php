@@ -29,7 +29,10 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-        //
+       Role::create($request->only(['name', 'description']));
+        return redirect()
+            ->route('roles.index')
+            ->with('success', 'Role created successfully');
     }
 
     /**
