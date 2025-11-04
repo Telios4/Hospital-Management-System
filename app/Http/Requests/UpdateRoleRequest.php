@@ -11,7 +11,7 @@ class UpdateRoleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,9 @@ class UpdateRoleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' =>['required','max:7','alpha',
+                Rule::unique('roles')->ignore($this->role->id)],
+            'description' => "max:10|required"
         ];
     }
 }
