@@ -12,6 +12,15 @@ Route::get('/', function () {
 
 
 Route::resource('roles',rolecontroller::class);
+Route::resource('users',Usercontroller::class);
+Route::resource('practitioners',Practitionercontroller::class);
+Route::resource('contacts',Contactcontroller::class);
+Route::resource('Statuses',Statusescontroller::class);
+Route::resource('Specialities',Specialitycontroller::class);
+Route::resource('subspecialities',Subspecialitiescontroller::class);
+Route::resource('institutions',Institutioncontroller::class);
+Route::resource('degrees',Institutioncontroller::class);
+Route::resource('settings',Setttingcontroller::class);
 
 
 /*
