@@ -64,16 +64,20 @@
                 <td>{{ date('M d, y', strtotime($user->created_at)) }}</td>
                 <td>
                   <div class="btn-group" role="group">
-                    <a href="{{ route('users.show', $user->id) }}" 
-                       class="btn btn-info btn-sm" 
-                       title="View">
-                      <i class="bi bi-eye"></i>
-                    </a>
                     <a href="{{ route('users.edit', $user->id) }}" 
                        class="btn btn-warning btn-sm" 
                        title="Edit">
                       <i class="bi bi-pencil"></i>
                     </a>
+                    <form action="{{ route('users.reset.password', $user->id) }}" 
+                            class="d-inline"
+                            onsubmit="return confirm('Are you sure you want to reset this user password?');">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-secondary btn-sm rounded-0" title="Reset Password">
+                          <i class="bi bi-key"></i>
+                        </button>
+                      </form>
                     
                       <form action="{{ route('users.destroy', $user->id) }}" 
                             method="POST" 
@@ -81,7 +85,7 @@
                             onsubmit="return confirm('Are you sure you want to delete this user?');">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" class="btn btn-danger btn-sm" title="Delete">
+                        <button type="submit" class="btn btn-danger btn-sm rounded-0" title="Delete">
                           <i class="bi bi-trash"></i>
                         </button>
                       </form>

@@ -12,6 +12,7 @@ Route::get('/', function () {
 
 
 Route::resource('roles',rolecontroller::class);
+Route::post('users/{user}/reset-password',[Usercontroller::class,'resetpassword'])->name('users.reset.password');
 Route::resource('users',Usercontroller::class);
 Route::resource('practitioners',Practitionercontroller::class);
 Route::resource('contacts',Contactcontroller::class);
