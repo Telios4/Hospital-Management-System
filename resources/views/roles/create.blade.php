@@ -1,9 +1,6 @@
 @extends('layouts.admin')
 
-@section('title', 'Add New Role')
-@section('page-title', 'Add New Role')
-@section('breadcrumbs')
-
+@section('title', 'Add Role')
 
 @section('content')
     @if($errors->any())
@@ -13,13 +10,28 @@
             @endforeach
         </div>
     @endif
+    <div class="card card-primary card-outline mb-4">
+        <div class="card-header">
+            <div class="card-title">Add Role</div>
+        </div>
         <form action="{{ route('roles.store') }}" method="POST">
             @csrf
-            <label for="name">Name:</label>
-            <input name="name"value="{{old('name')}}" required class="form-control">
-            <label for="name">Description:</label>
-            <textarea name="description"value="{{ old('description') }}" class="form-control"></textarea>
-            <button type="submit" class="btn btn-success">Save</button>
-            <a href="{{ route('roles.index') }}" class="btn btn-secondary">Back</a>
+            <div class="card-body">
+                <div class="mb-3">
+                    <label for="name" class="form-label">Name:</label>
+                    <input required value="{{ old('name') }}" type="name" name="name" class="form-control">
+                </div>
+                <div class="mb-3">
+                    <label for="description" class="form-label">Description:</label>
+                    <textarea class="form-control" name="description">
+                        {{ old('description') }}
+                    </textarea>
+                </div>
+                <div class="card-footer">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi-icons bi-save"></i> Submit
+                    </button>
+                </div>
         </form>
+    </div>
 @endsection
