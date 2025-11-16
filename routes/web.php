@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\SpecialitiesController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -11,13 +13,13 @@ Route::get('/', function () {
 });*/
 
 
-Route::resource('roles',rolecontroller::class);
-Route::post('users/{user}/reset-password',[Usercontroller::class,'resetpassword'])->name('users.reset.password');
-Route::resource('users',Usercontroller::class);
+Route::resource('roles',RoleController::class);
+Route::post('users/{user}/reset-password',[UserController::class,'resetpassword'])->name('users.reset.password');
+Route::resource('users',UserController::class);
 Route::resource('practitioners',Practitionercontroller::class);
 Route::resource('contacts',Contactcontroller::class);
 Route::resource('Statuses',Statusescontroller::class);
-Route::resource('Specialities',Specialitycontroller::class);
+Route::resource('specialities',SpecialitiesController::class);
 Route::resource('subspecialities',Subspecialitiescontroller::class);
 Route::resource('institutions',Institutioncontroller::class);
 Route::resource('degrees',Institutioncontroller::class);

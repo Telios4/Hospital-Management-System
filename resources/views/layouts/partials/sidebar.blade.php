@@ -100,7 +100,7 @@
 
         {{--Specialities--}}
        <li class="nav-item">
-          <a href="{{ route('Specialities.index') }}" class="nav-link {{ request()->is('Specialities*') ? 'active' :"";}}">
+          <a href="{{ route('specialities.index') }}" class="nav-link {{ request()->is('Specialities*') ? 'active' :"";}}">
             <i class="nav-icon bi bi-star"></i>
             <p>Specialities</p>
           </a>
@@ -145,4 +145,4 @@
   </div>
   <!--end::Sidebar Wrapper-->
 </aside>
-<!--end::Sidebar-->
+<!--end::Sidebar-->e34

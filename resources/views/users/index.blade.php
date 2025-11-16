@@ -60,7 +60,7 @@
                   </span>
                 </td>
     
-                <td>{{ $user->role->description}}</td>
+                <td>{{ $user->description}}</td>
                 <td>{{ date('M d, y', strtotime($user->created_at)) }}</td>
                 <td>
                   <div class="btn-group" role="group">
@@ -115,7 +115,7 @@
 @push('scripts')
 <script>
   // Add any page-specific JavaScript here
-  console.log('Roles index page loaded');
+  console.log('User index page loaded');
   
   // Example: Auto-hide alerts after 5 seconds
   setTimeout(function() {

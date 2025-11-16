@@ -22,7 +22,7 @@ class UpdateSpecialityRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' =>['required','max:100',Rule::unique('specialitites')->ignore($this->speciality->id)]
         ];
     }
 }

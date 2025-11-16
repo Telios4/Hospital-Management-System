@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\TwoNames;
+use Illuminate\Validation\Rule; // ← Add this line
 
 class UpdateUserRequest extends FormRequest
 {
