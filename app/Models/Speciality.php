@@ -19,7 +19,7 @@ class Speciality extends Model
         return $this->hasMany(Practitioners::class);
     }
     public function subSpecialities():HasMany{
-        return $this->hasMany(SubSpecialities::class);
+        return $this->HasMany(Subspecialities::class);
     }
     
     

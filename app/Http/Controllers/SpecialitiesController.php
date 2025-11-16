@@ -13,10 +13,19 @@ class SpecialitiesController extends Controller
      */
     public function index()
     {
-        $specialities= Speciality::query()->sortable()->paginate(env('PAGINATION_COUNT',10));
+        $search = trim(request('search'));
+        if(request()->has('search')){
+            request()->validate([
+                'search' => [new AlphaSpaces()],
+            ]);
+            $specialities= Speciality::where('name','like',"%$search%")->sortable;
         return view('specialities.index', compact('specialities'));
+        }
+        else{
+            $specialities= Speciality::query()->sortable()->paginate(env('PAGINATION_COUNT',10));
+            return view('specialities.index', compact('specialities'));}
     }
-
+ 
     /**
      * Show the form for creating a new resource.
      */

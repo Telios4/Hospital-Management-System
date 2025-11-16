@@ -23,8 +23,26 @@
           <a href="{{ route('specialities.create') }}" class="btn btn-primary btn-sm">
             <i class="bi bi-plus-circle"></i> Add New Role
           </a>
+          <form action="{{ route('specialities.index') }}" method="GET" class="d-inline-block me-2">
+            <div class="input-group input-group-sm">
+              {{--  show inline error messages --}}
+              <input type="text" name="search"
+                class="form-control {{ $errors->has('search') ? 'is-invalid' : '' }}"
+                title="{{ $errors->has('search') ? 'Error: may only contain letters and spaces' : '' }}"
+                placeholder="Search Specialities" {{ (request()->has('search') && trim(request('search')) !== "") ? 'autofocus' : '' }} value="{{ old('search', request('search')) }}">
+                <div class="input-group-append">
+                  <button type="Search" class="btn btn-secondary">
+                    <i class="bi bi-search"></i>
+                  </button>
+                </div>
+            </div>
+           </form>
+           <a href="{{ route('specialities.index') }}" class="btn btn-primary btn-sm">
+            <i class="bi bi-arrow-clockwise"></i>
+          </a>
         </div>
       </div>
+      
       <!-- /.card-header -->
       
       <div class="card-body">
@@ -97,7 +115,7 @@
 @push('scripts')
 <script>
   // Add any page-specific JavaScript here
-  console.log('Roles index page loaded');
+  console.log('Speciality index page loaded');
   
   // Example: Auto-hide alerts after 5 seconds
   setTimeout(function() {
