@@ -18,7 +18,7 @@ Route::post('users/{user}/reset-password',[UserController::class,'resetpassword'
 Route::resource('users',UserController::class);
 Route::resource('practitioners',Practitionercontroller::class);
 Route::resource('contacts',Contactcontroller::class);
-Route::resource('Statuses',Statusescontroller::class);
+Route::resource('statuses',Statusescontroller::class);
 Route::resource('specialities',SpecialitiesController::class);
 Route::resource('subspecialities',Subspecialitiescontroller::class);
 Route::resource('institutions',Institutioncontroller::class);
